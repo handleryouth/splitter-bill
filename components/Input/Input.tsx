@@ -1,12 +1,4 @@
-import { ReactNode } from "react";
-
-interface InputProps {
-  label?: string;
-  icon?: ReactNode;
-  placeholder: string;
-  className?: string;
-  toggleFunction: (value: string) => void;
-}
+import { InputProps } from "types";
 
 const Input = ({
   label,
@@ -14,6 +6,7 @@ const Input = ({
   placeholder,
   className,
   toggleFunction,
+  value,
 }: InputProps) => {
   return (
     <div>
@@ -23,6 +16,7 @@ const Input = ({
         <input
           className={`ml-3 p-2 w-full focus:ring-0 focus:outline-none text-right ${className}`}
           type="text"
+          value={value}
           onChange={(e) => toggleFunction(e.target.value)}
           placeholder={placeholder}
         />

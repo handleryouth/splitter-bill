@@ -1,8 +1,4 @@
-interface TipBadgeProps {
-  label: string;
-  value: number;
-  toggleFunction: (value: number) => void;
-}
+import { TipBadgeProps } from "types";
 
 const TipBadge = ({ label, value, toggleFunction }: TipBadgeProps) => {
   return (

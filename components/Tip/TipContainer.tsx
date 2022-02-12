@@ -1,21 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "features";
+import { TipOptions } from "types";
+import { addTip } from "features/transaction";
 import TipBadge from "./TipBadge";
 import Input from "../Input/Input";
-import { addTip } from "features/transaction";
-
-interface TipOptions {
-  label: string;
-  value: number;
-}
 
 const TipContainer = () => {
   const dispatch = useDispatch();
+  const { transaction } = useSelector((state: RootState) => state);
   const tipSelection: TipOptions[] = [
-    { label: "5%", value: 0.05 },
-    { label: "10%", value: 0.1 },
-    { label: "15%", value: 0.15 },
-    { label: "20%", value: 0.2 },
-    { label: "25%", value: 0.25 },
+    { label: "5%", value: "5" },
+    { label: "10%", value: "10" },
+    { label: "15%", value: "15" },
+    { label: "20%", value: "20" },
+    { label: "25%", value: "25" },
   ];
 
   return (
@@ -31,8 +29,9 @@ const TipContainer = () => {
         ))}
         <Input
           placeholder="Custom Tip"
+          value={transaction.tip}
           className="!text-center"
-          toggleFunction={(value) => dispatch(addTip(Number(value) / 100))}
+          toggleFunction={(value) => dispatch(addTip(value))}
         />
       </div>
     </div>

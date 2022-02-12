@@ -10,11 +10,12 @@ const TotalContainer = () => {
 
   useEffect(() => {
     const total_person =
-      (transaction.transaction_number +
-        transaction.tip * transaction.transaction_number) /
-      transaction.people_total;
+      (Number(transaction.transaction_number) +
+        (Number(transaction.tip) / 100) *
+          Number(transaction.transaction_number)) /
+      Number(transaction.people_total);
 
-    dispatch(addTotalPerson(total_person || 0));
+    dispatch(addTotalPerson(total_person || ""));
   }, [
     dispatch,
     transaction.people_total,
@@ -25,10 +26,16 @@ const TotalContainer = () => {
   return (
     <div className="bg-darkCyan rounded-md p-4 basis-1/2 flex flex-col justify-between mt-4 custom-breakpoint:ml-10 custom-breakpoint:mt-0">
       <div>
-        <Count title="Tip Amount" value={Number(transaction.tip.toFixed(3))} />
+        <Count
+          title="Tip Amount"
+          value={
+            (Number(transaction.tip) / 100) *
+            Number(transaction.transaction_number)
+          }
+        />
         <Count
           title="Total Amount"
-          value={Number(transaction.total_person.toFixed(3))}
+          value={Number(Number(transaction.total_person).toFixed(3))}
         />
       </div>
 

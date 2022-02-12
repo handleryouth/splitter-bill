@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export const transactionSlice = createSlice({
   name: "transaction",
   initialState: {
-    transaction_number: 0,
-    people_total: 0,
-    tip: 0,
-    total_person: 0,
+    transaction_number: "",
+    people_total: "",
+    tip: "",
+    total_person: "",
   },
   reducers: {
     addTransaction(state, action) {
@@ -22,10 +22,10 @@ export const transactionSlice = createSlice({
       state.total_person = action.payload;
     },
     resetransaction(state) {
-      state.transaction_number = 0;
-      state.people_total = 0;
-      state.tip = 0;
-      state.total_person = 0;
+      state.transaction_number = "";
+      state.people_total = "";
+      state.tip = "";
+      state.total_person = "";
     },
   },
 });

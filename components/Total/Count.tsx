@@ -1,9 +1,5 @@
 import { useCallback } from "react";
-
-interface CountProps {
-  title: string;
-  value: number;
-}
+import { CountProps } from "types";
 
 const Count = ({ title, value }: CountProps) => {
   const handleInfinityNumber = useCallback(() => {
